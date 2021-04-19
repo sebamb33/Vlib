@@ -67,6 +67,10 @@ body
     border-radius: 0.4em;
     color:#f8ede3;
 }
+.actif
+{
+    color:#798777;
+}
 /* Partie de la page acceuil*/
 /*je suis un geudin j'ai inversé la gauche et la droite */
 .contentAcceuil
@@ -102,3 +106,6 @@ body
     font-family: 'Varela Round', sans-serif;
     font-size: 1.5em;
 }
+
+
+/*Partie connexion et authentification*/

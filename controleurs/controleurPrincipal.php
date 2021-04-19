@@ -17,8 +17,8 @@ else{
 $vlibMP = new Menu("menuPrincipal");
 $vlibMP->ajouterComposant($vlibMP->creerItemLien("accueil", "Accueil"));
 $vlibMP->ajouterComposant($vlibMP->creerItemLien("stations", "Stations"));
-$vlibMP->ajouterComposant($vlibMP->creerItemLien("abonnement", "Abonnement"));
-$vlibMP->ajouterComposant($vlibMP->creerItemLien("abonnement", "Nous contacter"));
+$vlibMP->ajouterComposant($vlibMP->creerItemLien("abonnements", "Abonnements"));
+$vlibMP->ajouterComposant($vlibMP->creerItemLien("connexionAuth", "Connexion/Inscriptions"));
 $menuPrincipal = $vlibMP->creerMenu($_SESSION['vlibMP'],'vlibMP');
 
 include_once dispatcher::dispatch($_SESSION['vlibMP']);
