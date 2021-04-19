@@ -1,0 +1,104 @@
+/*
+    font-family: 'Pacifico', cursive; Pour les titres 
+
+  font-family: 'Varela Round', sans-serif;
+*/
+body
+{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;  
+}
+.container
+{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+}
+.header
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8ede3;
+}
+.titreSite
+{
+    font-family: 'Pacifico', cursive ;
+    font-size: 4.1em;
+    color:#a2b29f;
+}
+.menuPrinc
+{
+    
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.5em;
+   
+    background-color: #f8ede3;
+    
+}
+/*Supprime effet visuel quand lien déja click*/
+.menuPrincipal li a:visited 
+{
+    text-decoration: none;
+    color: black;
+}
+/* Supprime la déco des liens*/
+.menuPrincipal li a:link
+{
+    text-decoration: none;
+}
+
+.menuPrincipal
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;  
+    flex-basis: 100%;
+    justify-content: space-around;
+    list-style-type: none;
+    text-decoration: none;
+}
+.itemMenu *
+{
+    padding: 0.5em;
+    background-color: #a2b29f;
+    border-radius: 0.4em;
+    color:#f8ede3;
+}
+/* Partie de la page acceuil*/
+/*je suis un geudin j'ai inversé la gauche et la droite */
+.contentAcceuil
+{
+    display: flex;
+    flex-direction: row;
+    flex-basis: 100%;
+}
+
+.partieDroiteContentAcceuil
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.partieDroiteContentAcceuil .logoEmoji
+{
+    font-size: 6em;
+    padding:1em;
+
+}
+.partieDroiteContentAcceuil .intituleContentAcceuil
+{
+    
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5em;
+    color:#a2b29f;
+
+}
+.partieGaucheContentAcceuil
+{
+    padding-top: 2em;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.5em;
+}
