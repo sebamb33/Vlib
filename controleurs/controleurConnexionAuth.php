@@ -13,6 +13,7 @@ $formulaireConnexion->ajouterComposantLigne($formulaireConnexion->creerLabel('Mo
 
 	$formulaireConnexion->ajouterComposantLigne($formulaireConnexion-> creerInputSubmit('submitConnex', 'submitConnex', 'Valider'));
 	$formulaireConnexion->ajouterComposantTab();
+	$formulaireConnexion->creerFormulaire();
 //Création formulaire inscription
 
 

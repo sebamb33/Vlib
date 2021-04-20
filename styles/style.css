@@ -109,3 +109,54 @@ body
 
 
 /*Partie connexion et authentification*/
+.contentConnexionAuth
+{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    
+   
+}
+.Fconnexion
+{
+    display: flex;
+    flex-direction: column;
+    background-color: #f8ede3;
+    padding: 2em;
+    border-radius: 2em;
+    margin: 0.5em auto;
+    width: 20%;
+}
+.Fconnexion .ligne 
+{
+    display: grid;
+    grid-template-columns: repeat(2,50%);
+    grid-template-rows: repeat(3,1fr);
+}
+.Fconnexion .ligne label
+{
+    font-family: 'Pacifico', cursive; 
+    color:#798777;
+    font-size: large;
+}
+.Fconnexion .ligne input
+{
+    font-family: 'Varela Round', sans-serif;
+   background-color: #f8ede3;
+   border:none;
+   border-bottom:5px solid #798777;
+   border-radius: 2px;
+   color:#798777;
+   grid-column: 2;
+
+}
+.Fconnexion .ligne #submitConnex
+{
+    grid-column: 1;
+    background-color:#a2b29f;
+    font-family: 'Pacifico', cursive; 
+    font-size: larger;
+    color: #f8ede3;
+    padding: 1em;
+    border-radius: 2em;
+}
