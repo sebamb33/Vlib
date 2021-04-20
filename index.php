@@ -1,6 +1,10 @@
 <?php
     require_once 'lib/autoLoader.php';
 	require_once 'lib/dispatcher.php';
+	require_once 'modele/DAO/param.php';
+	require_once 'modele/DAO/accesDonnes.php';
+
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">

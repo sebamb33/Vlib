@@ -34,7 +34,11 @@ $formulaireConnexion= new Formulaire("post","index.php","fconnexion","Fconnexion
 	$formInscr->ajouterComposantLigne($formInscr->creerInputTexte('prenomInsc','prenomInsc','',1,"votre Prenom ",''));
 	$formInscr->ajouterComposantTab();
 
-	$formInscr->ajouterComposantLigne($formInscr->creerLabelFor('email', 'Email : '));
+	$formInscr->ajouterComposantLigne($formInscr->creerLabel("Sexe :"));
+	$formInscr->ajouterComposantLigne($formInscr->creerSelect("selectSexe","selectSexe",["Mr","Mme","Mlle"]));
+	$formInscr->ajouterComposantTab();
+	
+	$formInscr->ajouterComposantLigne($formInscr->creerLabel('email', 'Email :'));
     $formInscr->ajouterComposantLigne($formInscr->creerInputTexte('email', 'email', '', 1, 'votre Email', 0));
     $formInscr->ajouterComposantTab();
 
@@ -48,7 +52,7 @@ $formulaireConnexion= new Formulaire("post","index.php","fconnexion","Fconnexion
 	$formInscr->ajouterComposantTab();
 
 	$formInscr->ajouterComposantLigne($formInscr->creerLabelFor('supplementAddr', 'Information complémentaire adresse :'));
-    $formInscr->ajouterComposantLigne($formInscr->creerInputTexte('complementgeo', 'complementgeo', '', 1, 'Supplément adresse', 0));
+    $formInscr->ajouterComposantLigne($formInscr->creerInputTexte('supplementAddr', 'supplementAddr', '', 1, 'Supplément adresse', 0));
     $formInscr->ajouterComposantTab();
 
 	$formInscr->ajouterComposantLigne($formInscr->creerLabelFor('ville', ' Ville :'));
@@ -57,6 +61,10 @@ $formulaireConnexion= new Formulaire("post","index.php","fconnexion","Fconnexion
 
 	$formInscr->ajouterComposantLigne($formInscr->creerLabelFor('cdp', 'Code postal :'));
     $formInscr->ajouterComposantLigne($formInscr->creerInputTexte('cdp', 'cdp', '', 1, 'votre code postale', 0));
+    $formInscr->ajouterComposantTab();
+
+	$formInscr->ajouterComposantLigne($formInscr->creerLabelFor('tel', 'N° télephone :'));
+    $formInscr->ajouterComposantLigne($formInscr->creerInputTexte('tel', 'tel', '', 1, 'votre numéro téléphonique ', 0));
     $formInscr->ajouterComposantTab();
 
 	$formInscr->ajouterComposantLigne($formInscr->creerInputSubmit('inscription',"inscription","Inscription"));

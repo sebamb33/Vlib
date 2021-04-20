@@ -85,10 +85,10 @@ public function creerInputRadio($unnom, $unevaleur,$unLabel){
 		return $composant;
 	}
 
-	public function creerSelect($unNom, $unId, $unLabel, $options){
+	public function creerSelect($unNom, $unId, $options){
 		$composant = "<select  name = '" . $unNom . "' id = '" . $unId . "' >";
 		foreach ($options as $option){
-			$composant .= "<option value = " ;
+			$composant .= "<option value = ".$option.">".$option."</option>" ;
 		}
 		$composant .= "</select></td></tr>";
 		return $composant;

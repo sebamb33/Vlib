@@ -207,3 +207,9 @@ body
     padding: 1em;
     border-radius: 2em;
 }
+.Finscription .ligne #selectSexe
+{
+    background-color: #f8ede3;
+    border:none;
+    color:#798777;
+}
