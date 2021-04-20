@@ -94,23 +94,23 @@ public function creerInputRadio($unnom, $unevaleur,$unLabel){
 		return $composant;
 	}
 
-    public function creerSelectVelos($unNom, $unId, $options){
-        $composant = "<select  name = '" . $unNom . "' id = '" . $unId . "' >";
-        foreach ($options as $option){
-            $composant .= "<option value ='" . $option->getNUMV() . "'>n° " . $option->getNUMV() . "</option>" ;
-        }
-        $composant .= "</select></td></tr>";
-        return $composant;
-    }
+    // public function creerSelectVelos($unNom, $unId, $options){
+    //     $composant = "<select  name = '" . $unNom . "' id = '" . $unId . "' >";
+    //     foreach ($options as $option){
+    //         $composant .= "<option value ='" . $option->getNUMV() . "'>n° " . $option->getNUMV() . "</option>" ;
+    //     }
+    //     $composant .= "</select></td></tr>";
+    //     return $composant;
+    // }
 
-    public function creerSelectPlots($unNom, $unId, $options){
-        $composant = "<select  name = '" . $unNom . "' id = '" . $unId . "' >";
-        foreach ($options as $option){
-            $composant .= "<option value ='" . $option->getNUM() . "'>n° " . $option->getNUM() . "</option>" ;
-        }
-        $composant .= "</select></td></tr>";
-        return $composant;
-    }
+    // public function creerSelectPlots($unNom, $unId, $options){
+    //     $composant = "<select  name = '" . $unNom . "' id = '" . $unId . "' >";
+    //     foreach ($options as $option){
+    //         $composant .= "<option value ='" . $option->getNUM() . "'>n° " . $option->getNUM() . "</option>" ;
+    //     }
+    //     $composant .= "</select></td></tr>";
+    //     return $composant;
+    // }
 
 
     public function creerInputSubmit($unNom, $unId, $uneValue){
@@ -148,10 +148,6 @@ public function creerInputRadio($unnom, $unevaleur,$unLabel){
 		echo $this->formulaireToPrint ;
 	}
 
-	//Créer le lien du pdf
-	public function creerLien($unLien, $unNom){
-	    $composant = "<a href=". $unLien . ">".$unNom."</a>";
-	    return $composant;
-	}
+
 
 }

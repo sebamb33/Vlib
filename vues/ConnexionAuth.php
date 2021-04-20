@@ -4,6 +4,7 @@
 		</div>
         <div class="contentConnexionAuth">
         <?php $formulaireConnexion->afficherFormulaire();?>
+        <?php $formInscr->afficherFormulaire();?>
         </div>
         <div class="footer">
         <?php include 'bas.php' ;?>

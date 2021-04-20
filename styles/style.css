@@ -112,7 +112,7 @@ body
 .contentConnexionAuth
 {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-basis: 100%;
     
    
@@ -123,9 +123,11 @@ body
     flex-direction: column;
     background-color: #f8ede3;
     padding: 2em;
+    padding-bottom:0em;
     border-radius: 2em;
     margin: 0.5em auto;
     width: 20%;
+    height: 40%;
 }
 .Fconnexion .ligne 
 {
@@ -151,6 +153,51 @@ body
 
 }
 .Fconnexion .ligne #submitConnex
+{
+    grid-column: 1;
+    background-color:#a2b29f;
+    font-family: 'Pacifico', cursive; 
+    font-size: larger;
+    color: #f8ede3;
+    padding: 1em;
+    border-radius: 2em;
+}
+.Finscription
+{
+    display: flex;
+    flex-direction: column;
+    background-color: #f8ede3;
+    padding: 2em;
+    border-radius: 2em;
+    margin: 0.5em auto;
+    width: 20%;
+}
+.Finscription .ligne 
+{
+    display: grid;
+    grid-template-columns: repeat(2,50%);
+    grid-template-rows: repeat(3,1fr);
+}
+.Finscription .ligne label
+{
+    font-family: 'Pacifico', cursive; 
+    color:#798777;
+    font-size: large;
+}
+
+.Finscription .ligne input
+{
+    font-family: 'Varela Round', sans-serif;
+   background-color: #f8ede3;
+   border:none;
+   border-bottom:5px solid #798777;
+   border-radius: 2px;
+   color:#798777;
+   grid-column: 2;
+
+}
+
+.Finscription .ligne #inscription
 {
     grid-column: 1;
     background-color:#a2b29f;

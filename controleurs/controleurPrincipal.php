@@ -10,7 +10,11 @@ else{
         $_SESSION['vlibMP']="accueil";
     }
 }
-
+//isset que sur deux champs car  j'ai mis requiered sur tous (pas très sécuriser)
+if(isset($_POST("nomInsc"))&& isset($_POST("email")))
+{
+    
+}
 //Création du menu principale
 
 
