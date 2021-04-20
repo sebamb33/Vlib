@@ -36,6 +36,18 @@ class Utilisateur
         $this->CP=$cp;
         $this->VILLE=$vil;
     }
+	public function hydrate(array $donnees)
+    {
+        foreach ($donnees as $key => $value)
+        {
+            $method = 'set'.($key);
+            if (method_exists($this, $method))
+            {
+                $this->$method($value);
+            }
+        }
+    }
+
 
 	public function getIDUTIL(){
 		return $this->IDUTIL;

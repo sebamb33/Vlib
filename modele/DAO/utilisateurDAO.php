@@ -9,7 +9,7 @@ require_once 'modele/DAO/accesDonnes.php';
     public static function VerificationUtilisateurMail(Utilisateur $user)
     {
         $mailSaisi=$user->getMAIL();
-        $sql="SELECT IDUTIL FROM utilisateur WHERE EMAIL =:mail";
+        $sql="SELECT IDUTIL FROM utilisateur WHERE MAIL =:mail";
         $req=DBCONNEX::getInstance()->prepare($sql);
         $req->bindParam(":mail",$mailSaisi);
         $req->execute();
@@ -36,7 +36,7 @@ require_once 'modele/DAO/accesDonnes.php';
     public static function  InscriptionUtilisateur(Utilisateur $user)
     {
         //Code type de 1 car abonné  CODEA car pas d'abonnement encore et initialisation à 0 du crédit temps et du montant à débiter 
-        $sql="INSERT INTO utilisateur  (`LOGIN`, `MDP`, `CODETYPE`,`CODEA`, `NOM`, `PRENOM`, `SEXE`, `DATENAISS`, `ADRESSE`, `SUPLEMENTADDR`, `TEL`, `VILLE`, `CP`, `CREDITTEMPS`, `MONTANTADEBITER`, `EMAIL`)VALUES (:logi,:mdp,'1','0',:nom,:pren,:sexe,:dateNaiss,:addr,:supaddr,:tel,:vil,:cp,'0.0','0.0',:mail)";
+        $sql="INSERT INTO utilisateur  (`LOGIN`, `MDP`, `CODETYPE`,`CODEA`, `NOM`, `PRENOM`, `SEXE`, `DATENAISS`, `ADRESSE`, `SUPLEMENTADDR`, `TEL`, `VILLE`, `CP`, `CREDITTEMPS`, `MONTANTADEBITER`, `MAIL`)VALUES (:logi,:mdp,'1','0',:nom,:pren,:sexe,:dateNaiss,:addr,:supaddr,:tel,:vil,:cp,'0.0','0.0',:mail)";
         $req=DBConnex::getInstance()->prepare($sql);
         //Créer variable dans les version récentes de php sinon warning
         $log=$user->getLOGIN();
@@ -77,6 +77,17 @@ require_once 'modele/DAO/accesDonnes.php';
 
     }
 
-    public static function connexionUtilisateur
+    public static function connexionUtilisateur($log,$mdp)
+    {
+        //Creation des variables pour éviter warning
+        $l=$log;
+        $m=md5($mdp);
+        $sql="SELECT * FROM utilisateur WHERE LOGIN=:logi and MDP=:mdp";
+        $req=DBConnex::getInstance()->prepare($sql);
+        $req->bindParam(":logi",$l);
+        $req->bindParam(":mdp",$m);
+        $req->execute();
+        return $req->fetch(PDO::FETCH_ASSOC);
     }
+}
 ?>

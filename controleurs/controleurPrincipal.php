@@ -38,6 +38,24 @@ if(isset($_POST["nomInsc"]))
     }
 // print_r($user);
 }
+//Si on viens du formulaire de connexion 
+
+if(isset($_POST["login"])and isset($_POST["mdp"]))
+{
+    $retour=UtilisateurDao::connexionUtilisateur($_POST["login"],$_POST["mdp"]);
+    if(count($retour)==0)
+    {
+        print("<script>alert(\"Vos identifiant sont incorect\");</script>");
+    }else
+    {
+        $utilConnecter=new Utilisateur();
+        $utilConnecter->hydrate($retour);
+
+        print_r($utilConnecter);
+    }
+}
+
+
 //Création du menu principale
 
 
