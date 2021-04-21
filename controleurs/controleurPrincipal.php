@@ -50,22 +50,30 @@ if(isset($_POST["login"])and isset($_POST["mdp"]))
     {
         $utilConnecter=new Utilisateur();
         $utilConnecter->hydrate($retour);
-
-        print_r($utilConnecter);
+        $_SESSION["dataUser"]=serialize($utilConnecter);
     }
 }
 
 
 //Création du menu principale
 
-
-$vlibMP = new Menu("menuPrincipal");
-$vlibMP->ajouterComposant($vlibMP->creerItemLien("accueil", "Accueil"));
-$vlibMP->ajouterComposant($vlibMP->creerItemLien("stations", "Stations"));
-$vlibMP->ajouterComposant($vlibMP->creerItemLien("abonnements", "Abonnements"));
-$vlibMP->ajouterComposant($vlibMP->creerItemLien("connexionAuth", "Connexion/Inscriptions"));
-$menuPrincipal = $vlibMP->creerMenu($_SESSION['vlibMP'],'vlibMP');
-
+if(isset($_SESSION["dataUser"]))
+{
+    $vlibMP = new Menu("menuPrincipal");
+    $vlibMP->ajouterComposant($vlibMP->creerItemLien("infoUtilisateur", "Mes infos"));
+    $vlibMP->ajouterComposant($vlibMP->creerItemLien("parametre", "Modifier mes options"));
+    $vlibMP->ajouterComposant($vlibMP->creerItemLien("rervations", "Réserver  🚲"));
+    $vlibMP->ajouterComposant($vlibMP->creerItemLien("deconnexion", "Se déconnecter ❌"));
+    $menuPrincipal = $vlibMP->creerMenu($_SESSION['vlibMP'],'vlibMP');
+    
+}else{
+    $vlibMP = new Menu("menuPrincipal");
+    $vlibMP->ajouterComposant($vlibMP->creerItemLien("accueil", "Accueil"));
+    $vlibMP->ajouterComposant($vlibMP->creerItemLien("stations", "Stations"));
+    $vlibMP->ajouterComposant($vlibMP->creerItemLien("abonnements", "Abonnements"));
+    $vlibMP->ajouterComposant($vlibMP->creerItemLien("connexionAuth", "Connexion/Inscriptions"));
+    $menuPrincipal = $vlibMP->creerMenu($_SESSION['vlibMP'],'vlibMP');
+}
 include_once dispatcher::dispatch($_SESSION['vlibMP']);
 
 

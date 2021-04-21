@@ -224,5 +224,11 @@ class Utilisateur
 	{
 		$this->MDP=random_int(0,9999);
 	}
+
+	public function calculFinance()
+	{
+		//Calcul l'argent que l'utilisateur dois 
+		return ($this->CREDITTEMPS -$this->MONTANTADEBITER);
+	}
 }
 ?>

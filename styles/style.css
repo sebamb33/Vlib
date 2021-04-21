@@ -143,7 +143,7 @@ body
 }
 .Fconnexion .ligne input
 {
-    font-family: 'Varela Round', sans-serif;
+   font-family: 'Varela Round', sans-serif;
    background-color: #f8ede3;
    border:none;
    border-bottom:5px solid #798777;
@@ -212,4 +212,70 @@ body
     background-color: #f8ede3;
     border:none;
     color:#798777;
+}
+
+/* Partie sur mes infos dans l'espace utilisateur*/
+.contentInfoUtilisateur
+{
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin:8%;  
+}
+
+/*Met le nom et le prenom de l'utilisateur  de la même police*/
+.contentInfoUtilisateur .itemInfoUtilisateur:first-child
+{
+    font-family: 'Pacifico', cursive; 
+    font-size: larger;
+    color:#798777;
+}
+.itemInfoUtilisateur
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f8ede3;
+    padding: 5%;
+    border-radius: 2em;
+    margin-top: 2%;
+}
+.itemInfoUtilisateur .intituleItem
+{
+    font-family: 'Pacifico', cursive; 
+    font-size: larger;
+    color:#798777;
+}
+.itemInfoUtilisateur
+{
+    font-family: 'Varela Round', sans-serif;
+    color:#798777;
+    font-size:larger;
+}
+#alerteBasSolde
+{
+    color:#c64756;
+}
+#alerteAucunAbonnement
+{
+    color:#c64756;
+}
+#rechSolde
+{
+    background-color:#a2b29f;
+    font-family: 'Pacifico', cursive; 
+    font-size: larger;
+    color: #f8ede3;
+    border-bottom:5px solid #798777;
+    border-radius:0.8em ;
+}
+@media screen and (max-width:1100px)
+{
+    .contentInfoUtilisateur
+    {
+        flex-direction: column;
+    }
+    
 }

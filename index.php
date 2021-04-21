@@ -1,4 +1,5 @@
 <?php
+@session_start();
     require_once 'lib/autoLoader.php';
 	require_once 'lib/dispatcher.php';
 	require_once 'modele/DAO/param.php';
