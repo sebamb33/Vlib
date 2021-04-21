@@ -16,6 +16,26 @@ body
     flex-direction: column;
     flex-basis: 100%;
 }
+@media screen and (max-width:900px)
+{
+    .container
+    {
+        flex-direction: row;
+    }
+    .menuPrincipal
+    {
+        flex-direction: row;
+    }
+    .itemMenu
+    {
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+    .partieModificationParametre
+    {
+        margin-top: 1em;
+    }
+}
 .header
 {
     display: flex;
@@ -271,6 +291,10 @@ body
     border-bottom:5px solid #798777;
     border-radius:0.8em ;
 }
+.contentInfoUtilisateur .itemInfoUtilisateur:last-child
+{
+    padding: 2%;
+}
 @media screen and (max-width:1100px)
 {
     .contentInfoUtilisateur
@@ -278,4 +302,127 @@ body
         flex-direction: column;
     }
     
+}
+
+/*Partie paramètre de l'utilisateur*/
+
+.contentParametre
+{
+    display: flex;
+    flex-basis: 100%;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin:5%;
+}
+.partieInfoUserParametre
+{
+    display: flex;
+    flex-direction: column;
+    padding: 2.4em;
+    border-radius: 1em;
+    background-color: #f8ede3;
+}
+.labelInfoUser
+{
+    display: grid;
+    grid-template-columns: repeat(2,50%);
+    font-family: 'Pacifico', cursive; 
+    font-size: 1.3em;
+    color:#798777;  
+}
+.infoUser
+{
+    grid-column:2 ;
+    font-family: 'Varela Round', sans-serif;
+    color:#a2b29f;
+    font-size:1em;
+    padding-left: 0.2em;
+}
+/*Partie formulaire modification dans parametre */
+.partieModificationParametre
+{
+    padding: 2em;
+    background-color: #f8ede3;
+    border-radius: 1em;
+}
+.ligne{
+    display: grid;
+    grid-template-columns: repeat(2,45%);
+}
+.ligne label
+{
+    grid-column: 1;
+    font-family: 'Pacifico', cursive; 
+    font-size: 1.3em;
+    color:#798777;  
+}
+.FModif .ligne input
+{
+    font-family: 'Varela Round', sans-serif;
+    background-color: #f8ede3;
+    border:none;
+    border-bottom:2px solid #798777;
+    border-radius: 2px;
+    color:#798777;
+    grid-column: 2;
+}
+.ligne #modification
+{
+    margin-top: 2em;
+    padding: 0.5em;
+    background-color:#a2b29f;
+    font-family: 'Pacifico', cursive; 
+    font-size: larger;
+    color: #f8ede3;
+    border-bottom:5px solid #798777;
+    border-radius:0.8em ;
+}
+.partieModifiAbonPay
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.FPayement
+{
+    display:flex;
+    flex-basis: 100%;
+    flex-direction: column;
+}
+.sommePayParam
+{
+    background-color: #f8ede3;
+    padding: 2.4em;
+    margin:1em;
+    border-radius: 2em;
+}
+.changeAbonParam
+{
+    background-color: #f8ede3;
+    padding: 2.4em;
+    margin: 1em;
+    border-radius: 2em;
+}
+.FPayement #modifierPay 
+{
+    margin-top: 2em;
+    padding: 0.5em;
+    background-color:#a2b29f;
+    font-family: 'Pacifico', cursive; 
+    font-size: larger;
+    color: #f8ede3;
+    border-bottom:5px solid #798777;
+    border-radius:0.8em ;
+}
+.FChoixAbonn #modifierAbon
+{
+    margin-top: 2em;
+    padding: 0.5em;
+    background-color:#a2b29f;
+    font-family: 'Pacifico', cursive; 
+    font-size: larger;
+    color: #f8ede3;
+    border-bottom:5px solid #798777;
+    border-radius:0.8em ;
 }
