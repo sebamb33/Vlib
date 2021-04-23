@@ -230,5 +230,26 @@ class Utilisateur
 		//Calcul l'argent que l'utilisateur dois 
 		return ($this->CREDITTEMPS -$this->MONTANTADEBITER);
 	}
+	//Va set la date du début de l'abonnement et de la fin de l'abonnement en fonction de l'abonnement choisis
+	public function calculDate($codeA)
+	{
+		$date=new DateTime( date("d.m.y"));
+		$this->DATEDEBABON=$date;
+			if($codeA==1){ //24h 
+				$unJ=new DateInterval('P1D');
+				$this->DATEFINABON=$date->sub($unJ);
+			}else if($codeA==2){//7jours
+				
+				$date=new DateTime( date("d.m.y"));
+				$this->DATEDEBABON=$date;
+				$date->add(new DateInterval('P7D'));
+				$this->DATEFINABON=$date;
+			}else
+			{
+
+			}
+		
+	}
+	// Va modifier le format date pour l'insertion dans la base de données 
 }
 ?>

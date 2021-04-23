@@ -17,7 +17,7 @@
         $mesItems.="<div class = \"itemInfoUtilisateur\"><div class =intituleItem id=\"alerteAucunAbonnement\">📜Votre abonnement</div><div class =\"sousIntituleItem\">".abonnementDAO::libelleAbonnement($user)."</div></div>";
     }else
     {
-        $mesItems.="<div class = \"itemInfoUtilisateur\"><div class =intituleItem id=\"aUnAbonnement\">📜Votre abonnement </div><div class =\"sousIntituleItem\">".abonnementDAO::libelleAbonnement($user)."</div><div class =\"sousIntTrois\">Date début  : ".$user->getDATEDEBABON()."</div><div class =\"sousIntQuatre\">Date fin : :".$user->DATEFINABON()."</div></div>";
+        $mesItems.="<div class = \"itemInfoUtilisateur\"><div class =intituleItem id=\"aUnAbonnement\">📜Votre abonnement </div><div class =\"sousIntituleItem\">".abonnementDAO::libelleAbonnement($user)."</div><div class =\"sousIntTrois\">Date début  : ".date_Format($user->getDATEDEBABON(),date("d.m.y"))."</div><div class =\"sousIntQuatre\">Date fin : :".date_Format($user->getDATEFINABON(),date("d.m.y"))."</div></div>";
     }
    
     //Quatrième item  affichant le solde en euro de l'utilisateur 

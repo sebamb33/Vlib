@@ -89,5 +89,14 @@ require_once 'modele/DAO/accesDonnes.php';
         $req->execute();
         return $req->fetch(PDO::FETCH_ASSOC);
     }
+
+    public static function modifAbonnement($id,$codeA)
+    {
+        $sql ="UPDATE utilisateur SET CODEA = :code WHERE IDUTIL= :idutil";
+        $req=DBConnex::getInstance()->prepare($sql);
+        $req->bindParam(":code",$codeA);
+        $req->bindParam(":idutil",$id);
+        return $req->execute();
+    }
 }
 ?>

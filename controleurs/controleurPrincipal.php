@@ -55,6 +55,36 @@ if(isset($_POST["login"])and isset($_POST["mdp"]))
 }
 
 
+//Si on viens de changer sa formule d'abonnement dans les paramètres
+if(isset($_POST["selectAbonn"]))
+{
+    $user=new Utilisateur();
+    $user=unserialize($_SESSION["dataUser"]);
+    $idUtil=$user->getIDUTIL();
+    $abonnementSelectLibelle = $_POST["selectAbonn"];
+    $codeA=abonnementDAO::ChargementCodeA($abonnementSelectLibelle)[0];
+    //Definis le date debut et date fin de l'abonnement 
+    if($codeA!=0)
+    {
+        $user->calculDate($codeA);
+        $_SESSION["dataUser"]=serialize($user);
+    }
+
+    //Si la requete est valider par la BD
+    if(UtilisateurDao::modifAbonnement($idUtil,$codeA)==1)
+    {
+        print("<script>alert(\"Votre abonnement à était modifier pour le  format : ".$abonnementSelectLibelle."\");</script>");
+        //modification du codeA dans  l'objet utilisateur
+        $user->setCODEA($codeA);
+        $_SESSION["dataUser"]=serialize($user);
+    }else
+    {
+        print("<script>alert(".$codeA.");</script>");
+        
+    }
+}
+
+
 //Création du menu principale
 
 if(isset($_SESSION["dataUser"]))

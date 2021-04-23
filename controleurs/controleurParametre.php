@@ -7,7 +7,13 @@
     //     //TODO   faire verification si la requete dans la bd fonctionne 
     //     $_SESSION["dataUser"]=serialize($us)
     // }
-   
+
+    //Calcul des dates  si celle-ci  sont définis 
+    if($user->getCODEA()!= 0)
+    {
+        $dateDeb = date_Format($user->getDATEDEBABON(),date("d.m.y"));
+        $dateFin = date_Format($user->getDATEFINABON(),date("d.m.y"));
+    }
 
     $infoUser="<div class='labelInfoUser'> Login👨‍🦲 : <div class='infoUser'>".$user->getLOGIN()."</div>
     </div>
@@ -30,7 +36,7 @@
     //Vérification que l'utilisateur à un abonnement
     if($user->getCODEA()!=0)
     {
-        $infoUser.="<div class='labelInfoUser'> Validité abonnemnt : <div class='infoUser'>[".$user->getDATEDEBABON()."]/[".$user->getDATEFINABON()."]</div></div>";
+        $infoUser.="<div class='labelInfoUser'> Validité abonnemnt : <div class='infoUser'>[".$dateDeb."]/[".$dateFin."]</div></div>";
     }
     $infoUser.="<div class='labelInfoUser'>Montant à débiter:  <div class='infoUser'>".$user->getMONTANTADEBITER()." euro(s)</div></div>
     <div class='labelInfoUser'> Credit temps: <div class='infoUser'>".$user->getCREDITTEMPS()." euro(s)</div></div>";
@@ -84,10 +90,21 @@
     $formPayement->ajouterComposantTab();
     $formPayement->creerFormulaire();
 
+    //Récupération de tout les types d'abonnement utiliser dans la base de données 
+
+    $bdDonne=abonnementDAO::ChargementLibelleToutabonnements();
+    $LibelleToutAbonnement=[];
+
+    foreach($bdDonne as $donne)
+    {
+        array_push($LibelleToutAbonnement,$donne[0]);
+    }
+
+
     //Formulaire pour choisir l'abonnement et changer 
-    $formChoixAbonn=new Formulaire("post","controleurParametre.php","fChoixAbonn","FChoixAbonn");
+    $formChoixAbonn=new Formulaire("post","index.php","fChoixAbonn","FChoixAbonn");
     $formChoixAbonn->ajouterComposantLigne($formChoixAbonn->creerLabelFor('selectAbonn', ' Selectionner votre nouvel abonnement :'));
-    $formChoixAbonn->ajouterComposantLigne($formChoixAbonn->creerSelect("selectAbonn","selectAbonn",["Mr","Mme","Mlle"]));
+    $formChoixAbonn->ajouterComposantLigne($formChoixAbonn->creerSelect("selectAbonn","selectAbonn",$LibelleToutAbonnement));
     $formChoixAbonn->ajouterComposantTab();
     $formChoixAbonn->ajouterComposantLigne($formChoixAbonn->creerInputSubmit('modifierAbon',"modifierAbon","💾"));
     $formChoixAbonn->ajouterComposantTab();

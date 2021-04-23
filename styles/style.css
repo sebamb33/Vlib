@@ -426,3 +426,22 @@ body
     border-bottom:5px solid #798777;
     border-radius:0.8em ;
 }
+.partieModifiAbonPay .sommePayParam .FPayement .ligne #sommePay
+{
+    background-color: #f8ede3;
+    border: none;
+    color:#798777;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1em;
+    border-bottom: 5px solid  #798777;
+}
+
+.changeAbonParam #selectAbonn
+{
+    background-color: #f8ede3;
+    border: none;
+    color:#798777;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1em;
+    border-bottom: 5px solid  #798777;
+}
