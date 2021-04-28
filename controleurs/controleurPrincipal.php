@@ -48,6 +48,7 @@ if(isset($_POST["login"])and isset($_POST["mdp"]))
         print("<script>alert(\"Vos identifiant sont incorect\");</script>");
     }else
     {
+        $_SESSION['vlibMP']="infoUtilisateur";
         $utilConnecter=new Utilisateur();
         $utilConnecter->hydrate($retour);
         $_SESSION["dataUser"]=serialize($utilConnecter);
@@ -66,6 +67,7 @@ if(isset($_POST["selectAbonn"]))
     //Definis le date debut et date fin de l'abonnement 
     if($codeA!=0)
     {
+
         $user->calculDate($codeA);
         $_SESSION["dataUser"]=serialize($user);
     }
