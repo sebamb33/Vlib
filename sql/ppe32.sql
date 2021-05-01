@@ -1,22 +1,12 @@
--- --------------------------------------------------------
--- Hôte :                        localhost
--- Version du serveur:           5.7.24 - MySQL Community Server (GPL)
--- SE du serveur:                Win64
--- HeidiSQL Version:             10.2.0.5599
--- --------------------------------------------------------
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
 /*!50503 SET NAMES utf8mb4 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
-
--- Listage de la structure de la base pour ppe32
 CREATE DATABASE IF NOT EXISTS `ppe32` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `ppe32`;
 
--- Listage de la structure de la table ppe32. abonnement
 CREATE TABLE IF NOT EXISTS `abonnement` (
     `CODEA` varchar(128) NOT NULL,
     `CODETYPEABO` varchar(128) NOT NULL,
@@ -30,7 +20,6 @@ CREATE TABLE IF NOT EXISTS `abonnement` (
     CONSTRAINT `abonnement_ibfk_1` FOREIGN KEY (`CODETYPEABO`) REFERENCES `type_abonement` (`CODETYPEABO`)
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table ppe32.abonnement : ~3 rows (environ)
 /*!40000 ALTER TABLE `abonnement` DISABLE KEYS */;
 INSERT INTO `abonnement` (`CODEA`, `CODETYPEABO`, `DUREEA`, `MONTANTA`, `CREDITTEMPSBASE`, `CAUTION`, `TLIB`) VALUES
 ('0', '0', '0', 0.00, 0.00, 0.00, 0),
@@ -38,18 +27,15 @@ INSERT INTO `abonnement` (`CODEA`, `CODETYPEABO`, `DUREEA`, `MONTANTA`, `CREDITT
 ('2', '2', '7jours', 5.00, 0.00, 200.00, 0);
 /*!40000 ALTER TABLE `abonnement` ENABLE KEYS */;
 
--- Listage de la structure de la table ppe32. date_histo
 CREATE TABLE IF NOT EXISTS `date_histo` (
                                             `DATEHISTO` date NOT NULL,
                                             `HEURE` time NOT NULL,
                                             PRIMARY KEY (`DATEHISTO`,`HEURE`)
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table ppe32.date_histo : ~0 rows (environ)
 /*!40000 ALTER TABLE `date_histo` DISABLE KEYS */;
 /*!40000 ALTER TABLE `date_histo` ENABLE KEYS */;
 
--- Listage de la structure de la table ppe32. emprunt
 CREATE TABLE IF NOT EXISTS `emprunt` (
     `IDUTIL` int(11) NOT NULL,
     `DATEHISTO` date NOT NULL,
@@ -65,11 +51,9 @@ CREATE TABLE IF NOT EXISTS `emprunt` (
     CONSTRAINT `emprunt_ibfk_3` FOREIGN KEY (`DATEHISTO`, `HEURE`) REFERENCES `date_histo` (`DATEHISTO`, `HEURE`)
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table ppe32.emprunt : ~0 rows (environ)
 /*!40000 ALTER TABLE `emprunt` DISABLE KEYS */;
 /*!40000 ALTER TABLE `emprunt` ENABLE KEYS */;
 
--- Listage de la structure de la table ppe32. etat_plot
 CREATE TABLE IF NOT EXISTS `etat_plot` (
     `NUMP` varchar(128) NOT NULL,
     `DATEHISTO` date NOT NULL,
@@ -82,11 +66,9 @@ CREATE TABLE IF NOT EXISTS `etat_plot` (
     CONSTRAINT `etat_plot_ibfk_2` FOREIGN KEY (`DATEHISTO`, `HEURE`) REFERENCES `date_histo` (`DATEHISTO`, `HEURE`)
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table ppe32.etat_plot : ~0 rows (environ)
 /*!40000 ALTER TABLE `etat_plot` DISABLE KEYS */;
 /*!40000 ALTER TABLE `etat_plot` ENABLE KEYS */;
 
--- Listage de la structure de la table ppe32. etat_station
 CREATE TABLE IF NOT EXISTS `etat_station` (
     `NUMS` varchar(128) NOT NULL,
     `DATEHISTO` date NOT NULL,
@@ -99,11 +81,9 @@ CREATE TABLE IF NOT EXISTS `etat_station` (
     CONSTRAINT `etat_station_ibfk_2` FOREIGN KEY (`DATEHISTO`, `HEURE`) REFERENCES `date_histo` (`DATEHISTO`, `HEURE`)
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table ppe32.etat_station : ~0 rows (environ)
 /*!40000 ALTER TABLE `etat_station` DISABLE KEYS */;
 /*!40000 ALTER TABLE `etat_station` ENABLE KEYS */;
 
--- Listage de la structure de la table ppe32. etat_velo
 CREATE TABLE IF NOT EXISTS `etat_velo` (
     `NUMV` varchar(128) NOT NULL,
     `DATEHISTO` date NOT NULL,
@@ -116,11 +96,9 @@ CREATE TABLE IF NOT EXISTS `etat_velo` (
     CONSTRAINT `etat_velo_ibfk_2` FOREIGN KEY (`DATEHISTO`, `HEURE`) REFERENCES `date_histo` (`DATEHISTO`, `HEURE`)
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table ppe32.etat_velo : ~0 rows (environ)
 /*!40000 ALTER TABLE `etat_velo` DISABLE KEYS */;
 /*!40000 ALTER TABLE `etat_velo` ENABLE KEYS */;
 
--- Listage de la structure de la table ppe32. plot
 CREATE TABLE IF NOT EXISTS `plot` (
     `NUMP` varchar(128) NOT NULL,
     `NUMV` varchar(128) DEFAULT NULL,
@@ -134,11 +112,9 @@ CREATE TABLE IF NOT EXISTS `plot` (
     CONSTRAINT `plot_ibfk_2` FOREIGN KEY (`NUMS`) REFERENCES `station` (`NUMS`)
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table ppe32.plot : ~0 rows (environ)
 /*!40000 ALTER TABLE `plot` DISABLE KEYS */;
 /*!40000 ALTER TABLE `plot` ENABLE KEYS */;
 
--- Listage de la structure de la table ppe32. station
 CREATE TABLE IF NOT EXISTS `station` (
     `NUMS` varchar(128) NOT NULL,
     `ETATS` varchar(128) DEFAULT NULL,
@@ -149,7 +125,6 @@ CREATE TABLE IF NOT EXISTS `station` (
     PRIMARY KEY (`NUMS`)
     ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table ppe32.station : ~66 rows (environ)
 /*!40000 ALTER TABLE `station` DISABLE KEYS */;
 INSERT INTO `station` (`NUMS`, `ETATS`, `NOMS`, `SITUATIONS`, `CAPACITES`, `NUMBORNE`) VALUES
 ('101', 'Disponible', 'Pl. Jean Jaures', NULL, NULL, '20'),
@@ -220,7 +195,6 @@ INSERT INTO `station` (`NUMS`, `ETATS`, `NOMS`, `SITUATIONS`, `CAPACITES`, `NUMB
 	('99', 'Disponible', 'Les Hangars', NULL, NULL, '20');
 /*!40000 ALTER TABLE `station` ENABLE KEYS */;
 
--- Listage de la structure de la table ppe32. type_abonement
 CREATE TABLE IF NOT EXISTS `type_abonement` (
   `CODETYPEABO` varchar(128) NOT NULL,
   `LIBELLETYPEABO` varchar(128) DEFAULT NULL,
@@ -228,7 +202,6 @@ CREATE TABLE IF NOT EXISTS `type_abonement` (
   PRIMARY KEY (`CODETYPEABO`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table ppe32.type_abonement : ~3 rows (environ)
 /*!40000 ALTER TABLE `type_abonement` DISABLE KEYS */;
 INSERT INTO `type_abonement` (`CODETYPEABO`, `LIBELLETYPEABO`, `TARIFHORAIRE`) VALUES
 	('0', 'Aucun Abonnement', 0.00),
@@ -236,21 +209,18 @@ INSERT INTO `type_abonement` (`CODETYPEABO`, `LIBELLETYPEABO`, `TARIFHORAIRE`) V
 	('2', '7jours', 2.00);
 /*!40000 ALTER TABLE `type_abonement` ENABLE KEYS */;
 
--- Listage de la structure de la table ppe32. type_utilisateur
 CREATE TABLE IF NOT EXISTS `type_utilisateur` (
   `CODETYPE` varchar(32) NOT NULL,
   `LIBELLETYPE` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`CODETYPE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table ppe32.type_utilisateur : ~2 rows (environ)
 /*!40000 ALTER TABLE `type_utilisateur` DISABLE KEYS */;
 INSERT INTO `type_utilisateur` (`CODETYPE`, `LIBELLETYPE`) VALUES
 	('1', 'abonne'),
 	('2', 'Responsable Technique');
 /*!40000 ALTER TABLE `type_utilisateur` ENABLE KEYS */;
 
--- Listage de la structure de la table ppe32. utilisateur
 CREATE TABLE IF NOT EXISTS `utilisateur` (
   `IDUTIL` int(11) NOT NULL AUTO_INCREMENT,
   `LOGIN` int(6) NOT NULL,
@@ -279,7 +249,6 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   CONSTRAINT `UTILISATEUR_ibfk_2` FOREIGN KEY (`CODEA`) REFERENCES `abonnement` (`CODEA`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table ppe32.utilisateur : ~10 rows (environ)
 /*!40000 ALTER TABLE `utilisateur` DISABLE KEYS */;
 INSERT INTO `utilisateur` (`IDUTIL`, `LOGIN`, `MDP`, `CODETYPE`, `CODEA`, `NOM`, `PRENOM`, `SEXE`, `DATENAISS`, `ADRESSE`, `SUPLEMENTADDR`, `TEL`, `VILLE`, `CP`, `DATEDEBABON`, `DATEFINABON`, `CREDITTEMPS`, `MONTANTADEBITER`, `MAIL`) VALUES
 	(1, 444333, '81dc9bdb52d04dc20036dbd8313ed055', '1', '1', 'toutou', 'momo', 'Mr', '2019-01-06', 'Coucou les bg', 'ca va ', '0669191385', 'Bègles', '12345', '2021-04-19', '2021-04-21', 30.20, 43.20, 'chaud@cacao.fr'),
@@ -291,10 +260,9 @@ INSERT INTO `utilisateur` (`IDUTIL`, `LOGIN`, `MDP`, `CODETYPE`, `CODEA`, `NOM`,
 	(14, 530605, '01daa090f0d5693d97c90755a54fa204', '1', '2', 'sebar', 'sebar', 'Mr', '2000-07-05', '11 ch des roseaux', ' supp', '0669564343', 'Bordeaux', '33130', '2021-05-01', '2021-05-08', 0.00, 0.00, 'seb@mail.com'),
 	(15, 260597, '81dc9bdb52d04dc20036dbd8313ed055', '1', '0', 'seba', 'seb', 'Mr', '2000-05-05', 'aaa', 'aaa', '0669567965', 'VSL', '33130', NULL, NULL, 30.30, 0.00, 'aa'),
 	(16, 97165, 'b645e524a1512ce68947d3b9c948aa46', '1', '0', 'sebo', 'sebo', 'Mr', '2000-07-05', '11 def le', 'lele', '0669191454', 'BDX', '33130', NULL, NULL, 0.00, 0.00, 'AD@GMAIL.com'),
-	(17, 173951, 'f106b7f99d2cb30c3db1c3cc0fde9ccb', '1', '1', 'bac', 'bac', 'Mr', '2000-05-05', '11 coucou bobo', 'supsup', '0606060606', 'Vsl', '47300', '2021-05-01', '2021-05-02', 30.00, 0.00, 'seba@bac.fr');
+	(17, 173951, 'f106b7f99d2cb30c3db1c3cc0fde9ccb', '1', '2', 'bac', 'bac', 'Mr', '2000-05-05', '11 coucou bobo', 'supsup', '0606060606', 'Vsl', '47300', '2021-05-01', '2021-05-02', 50.00, 0.00, 'seba@bac.fr');
 /*!40000 ALTER TABLE `utilisateur` ENABLE KEYS */;
 
--- Listage de la structure de la table ppe32. velo
 CREATE TABLE IF NOT EXISTS `velo` (
   `NUMV` varchar(128) NOT NULL,
   `NUMP` varchar(128) DEFAULT NULL,
@@ -306,7 +274,6 @@ CREATE TABLE IF NOT EXISTS `velo` (
   CONSTRAINT `velo_ibfk_1` FOREIGN KEY (`NUMP`) REFERENCES `plot` (`NUMP`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Listage des données de la table ppe32.velo : ~0 rows (environ)
 /*!40000 ALTER TABLE `velo` DISABLE KEYS */;
 /*!40000 ALTER TABLE `velo` ENABLE KEYS */;
 
