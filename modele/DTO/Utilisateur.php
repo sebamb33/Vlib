@@ -233,25 +233,15 @@ class Utilisateur
 	//Va set la date du début de l'abonnement et de la fin de l'abonnement en fonction de l'abonnement choisis
 	public function calculDate($codeA)
 	{
-
-
-		$oldDate   = "2020-02-27"; $date1 = date("Y-m-d", strtotime($oldDate.'+ 1 days')); $date2 = date("Y-m-d", strtotime($oldDate.'+ 2 days'));  echo $date1; //output: 2020-02-28 echo $date2; //output: 2020-02-29
-
-
-
-		$date=new DateTime(date("d.m.y"));
-		$this->DATEDEBABON=$date;
+		$this->DATEDEBABON=date('d.m.y');
 
 			if($codeA==1){ //24h 
 				
-				$this->DATEFINABON=date("d.m.");
+				$this->DATEFINABON= date('d.m.y', strtotime($this->DATEDEBABON. ' + 1 days'));
 			}
 			else if($codeA==2){//7jours
-				
-				$date=new DateTime( date("d.m.y"));
-				$this->DATEDEBABON=$date;
-				$date->add(new DateInterval('P7D'));
-				$this->DATEFINABON=$date;
+
+                $this->DATEFINABON= date('d.m.y', strtotime($this->DATEDEBABON. ' + 1 days'));
 			}else
 			{
 

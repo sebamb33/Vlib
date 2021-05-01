@@ -8,12 +8,7 @@
     //     $_SESSION["dataUser"]=serialize($us)
     // }
 
-    //Calcul des dates  si celle-ci  sont définis 
-    if($user->getCODEA()!= 0)
-    {
-        $dateDeb = date_Format($user->getDATEDEBABON(),date("d.m.y"));
-        $dateFin = date_Format($user->getDATEFINABON(),date("d.m.y"));
-    }
+
 
     $infoUser="<div class='labelInfoUser'> Login👨‍🦲 : <div class='infoUser'>".$user->getLOGIN()."</div>
     </div>
@@ -36,17 +31,17 @@
     //Vérification que l'utilisateur à un abonnement
     if($user->getCODEA()!=0)
     {
-        $infoUser.="<div class='labelInfoUser'> Validité abonnemnt : <div class='infoUser'>[".$dateDeb."]/[".$dateFin."]</div></div>";
+        $infoUser.="<div class='labelInfoUser'> Validité abonnemnt : <div class='infoUser'>[".$user->getDATEDEBABON()."]/[".$user->getDATEFINABON()."]</div></div>";
     }
     $infoUser.="<div class='labelInfoUser'>Montant à débiter:  <div class='infoUser'>".$user->getMONTANTADEBITER()." euro(s)</div></div>
     <div class='labelInfoUser'> Credit temps: <div class='infoUser'>".$user->getCREDITTEMPS()." euro(s)</div></div>";
 
 
     //Formulaire de modification 
-    $formModif=new Formulaire("post","controleurParametre.php","fModif","FModif");
+    $formModif=new Formulaire("post","index.php","fModif","FModif");
 	
 	$formModif->ajouterComposantLigne($formModif->creerLabel('email', 'Email :'));
-    $formModif->ajouterComposantLigne($formModif->creerInputTexte('email', 'email', '', 1, 'votre Email', 0));
+    $formModif->ajouterComposantLigne($formModif->creerInputTexte('emailParamModif', 'emailParamModif', '', 1, 'votre Email', 0));
     $formModif->ajouterComposantTab();
 
     
@@ -82,7 +77,7 @@
 
 
     /*Formulaire pour  ajouter de l'argent dans le compte  */
-    $formPayement=new Formulaire("post","controleurParametre.php","fPayement","FPayement");
+    $formPayement=new Formulaire("post","index.php","fPayement","FPayement");
     $formPayement->ajouterComposantLigne($formPayement->creerLabelFor('sommePay', ' Somme de rechargement :'));
     $formPayement->ajouterComposantLigne($formPayement->creerInputTexte('sommePay', 'sommePay', '', 1, 'Somme ', 0));
     $formPayement->ajouterComposantTab();

@@ -99,9 +99,57 @@ require_once 'modele/DAO/accesDonnes.php';
         return $req->execute();
     }
 
-    public static function modifDateAbon($id,$dateFinAbon)
+        //Modiifie la date du début de l'abonnement et de la fin de l'abonnement
+        public static function  ChangeDateAbon($idUtil,$codeA)
+        {
+            //Probleme de formatage de la date
+            //$dateFi=date('Y-m-d',strtotime($dateFin)); ne fonctionne pas donc obliger de faire
+            //des conditions ici
+            $dateDeb=date("Y-m-d");
+
+            if($codeA==1)//Abonnement un jour
+            {
+                $dateFin=date("Y-m-d",strtotime($dateDeb.'1 days'));
+            }elseif($codeA==2)//abonnement 7 jours
+            {
+                $dateFin=date("Y-m-d",strtotime($dateDeb.'1 week'));
+            }else // abonnement 1 ans
+            {
+                $dateFin=date("Y-m-d",strtotime($dateDeb.'+12 month'));
+            }
+            $sql ="UPDATE utilisateur set  DATEDEBABON =:dateDeb, DATEFINABON= :dateFin where IDUTIL=:idUtil";
+            $req=DBCONNEX::getInstance()->prepare($sql);
+            $req->bindParam(":dateDeb",$dateDeb);
+            $req->bindParam(":dateFin",$dateFin );
+            $req->bindParam(":idUtil",$idUtil);
+            $req->execute();
+        }
+
+        //Modifie la somme de l'utilisateur dans le compte
+    public static function RechargeSolde($id,$somme)
     {
-        //$sql=""
+        $sql="UPDATE  utilisateur set CREDITTEMPS= :somme WHERE IDUTIL=:id";
+        $req=DBConnex::getInstance()->prepare($sql);
+        $req->bindParam(":somme",$somme);
+        $req->bindParam(":id",$id);
+        $req->execute();
+
+    }
+    public static function ModificationInfoUtilisateur($id,$email,$addr,$supAddr,$ville,$cdp,$tel,$mdp)
+    {
+        $sql="update utilisateur 
+            set MAIL=:mail,CP=:cp,VILLE=:vil,TEL=:tel,SUPLEMENTADDR=:supAddr,ADRESSE=:addr,MDP=md5(:mdp) 
+            WHERE IDUTIL=:id";
+        $req=DBConnex::getInstance()->prepare($sql);
+        $req->bindParam(":mail",$email);
+        $req->bindParam(":cp",$cdp);
+        $req->bindParam(":vil",$ville);
+        $req->bindParam(":tel",$tel);
+        $req->bindParam(":supAddr",$supAddr);
+        $req->bindParam(":addr",$addr);
+        $req->bindParam(":mdp",$mdp);
+        $req->bindParam(":id",$id);
+        return $req->execute();
     }
 }
 ?>

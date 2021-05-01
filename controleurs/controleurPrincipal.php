@@ -67,8 +67,9 @@ if(isset($_POST["selectAbonn"]))
     //Definis le date debut et date fin de l'abonnement 
     if($codeA!=0)
     {
-
+        //Changement des dates dans l'objet utilisateur en fonction de l'abonnement choisi
         $user->calculDate($codeA);
+        UtilisateurDao::ChangeDateAbon($user->getIDUTIL(),$user->getCODEA());
         $_SESSION["dataUser"]=serialize($user);
     }
 
@@ -83,6 +84,53 @@ if(isset($_POST["selectAbonn"]))
     {
         print("<script>alert(".$codeA.");</script>");
         
+    }
+}
+
+// Quand l'utilisateur modifie son solde dans l'espace paramètre
+if(isset($_POST["sommePay"]))
+{
+    $user=new Utilisateur();
+    $user=unserialize($_SESSION["dataUser"]);
+    $sommeAjout=$_POST["sommePay"];
+    $msgAlert="<script>alert(La valeur saisie est pas bonne ou votre solde est supérieur à 50 après l'ajout )</script>";
+    //Verification que ça soit bien un nombre qui soit rentré
+    if(!preg_match('/^([^0-9]+)$/', $sommeAjout))
+    {
+        if(floatval($sommeAjout)+$user->getCREDITTEMPS()<=50.0)
+        {
+            $somme=floatval($sommeAjout)+floatval($user->getCREDITTEMPS());
+            $user->setCREDITTEMPS($somme);
+            UtilisateurDao::RechargeSolde($user->getIDUTIL(),$somme);
+            $_SESSION["dataUser"]=serialize($user);
+        }else
+        {
+            print($msgAlert);
+        }
+    }
+
+}
+
+//Si l'utilisateur modifie ses informations
+
+if(isset($_POST["emailParamModif"]))
+{
+    $user=new Utilisateur();
+    $user=unserialize($_SESSION["dataUser"]);
+    $emailModif=$_POST["emailParamModif"];
+    $addrModif=$_POST["numerovoie"];
+    $complAddrModif=$_POST["supplementAddr"];
+    $villeModif=$_POST["ville"];
+    $cdpModif=$_POST["cdp"];
+    $numTelModif=$_POST["tel"];
+    $mdpModif=$_POST["mdpModif"];
+    if(UtilisateurDao::ModificationInfoUtilisateur($user->getIDUTIL(),$emailModif,$addrModif,$complAddrModif,$villeModif,$cdpModif,$numTelModif,$mdpModif)==1 and !preg_match('/^([^0-9]+)$/', $mdpModif))
+    {
+        print("<script>alert(' Votre mot de passe à était modifier  vous allez maintenant être déconnecté');</script>");
+        require_once "controleurDeconnexion.php";
+    }else
+    {
+        print("<script>alert(' Verifiez votre saisie, aucune modification');</script>");
     }
 }
 
