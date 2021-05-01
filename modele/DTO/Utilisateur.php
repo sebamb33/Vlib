@@ -235,7 +235,7 @@ class Utilisateur
 	{
 
 
-		<?php $oldDate   = "2020-02-27"; $date1 = date("Y-m-d", strtotime($oldDate.'+ 1 days')); $date2 = date("Y-m-d", strtotime($oldDate.'+ 2 days'));  echo $date1; //output: 2020-02-28 echo $date2; //output: 2020-02-29 ?>
+		$oldDate   = "2020-02-27"; $date1 = date("Y-m-d", strtotime($oldDate.'+ 1 days')); $date2 = date("Y-m-d", strtotime($oldDate.'+ 2 days'));  echo $date1; //output: 2020-02-28 echo $date2; //output: 2020-02-29
 
 
 

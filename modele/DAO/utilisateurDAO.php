@@ -98,5 +98,10 @@ require_once 'modele/DAO/accesDonnes.php';
         $req->bindParam(":idutil",$id);
         return $req->execute();
     }
+
+    public static function modifDateAbon($id,$dateFinAbon)
+    {
+        //$sql=""
+    }
 }
 ?>
