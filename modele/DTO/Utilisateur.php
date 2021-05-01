@@ -241,7 +241,7 @@ class Utilisateur
 			}
 			else if($codeA==2){//7jours
 
-                $this->DATEFINABON= date('d.m.y', strtotime($this->DATEDEBABON. ' + 1 days'));
+                $this->DATEFINABON= date('d.m.y', strtotime($this->DATEDEBABON. ' + 1 week'));
 			}else
 			{
 
