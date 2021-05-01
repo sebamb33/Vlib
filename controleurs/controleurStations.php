@@ -17,26 +17,21 @@ foreach($tabObjStation as $station)
     if($station->getETATS()=="Disponible")
     {
         $affichageStation.=" <div class=\"StatDispo\">
-        <table class ='tabDispo'><tr>
-            <td>Nom de station : ".$station->getNOMS()."</td>
-            <td>etat : ".$station->getETATS()." </td>
-            <td>Nombre de bornes : ".$station->getNUMBORNE()."</td>
-        </tr></table>
+        <div class ='tabStation'>
+            <div class='intituleStat'>Nom de station : </div> <div class='infoStat'>".$station->getNOMS()."</div>
+            <div class='intituleStat'>etat : </div><div class='infoStat'>".$station->getETATS()." </div>
+            <div class='intituleStat'>Nombre de bornes : </div> <div class='infoStat'>".$station->getNUMBORNE()."</div>
+        </div>
         </div>";
     }else
     {
         $affichageStation.=" <div class=\"StatIndispo\">
-        <table class ='tabIndispo'>
-            <tr>
-                <td class='titreIndispo'>
-                   Station indisponible
-                </td>
-            </tr>
-            <tr>
-            <td>Nom de station : ".$station->getNOMS()."</td>
-            <td>etat : ".$station->getETATS()." </td>
-            <td>Nombre de bornes : ".$station->getNUMBORNE()."</td>
-        </tr></table>
+        <div class ='tabStation'>
+            
+            <div class='intituleStat'>Nom de station : </div> <div class='infoStat'>".$station->getNOMS()."</div>
+            <div class='intituleStat'>etat : </div><div class='infoStat'>".$station->getETATS()." </div>
+            <div class='intituleStat'>Nombre de bornes : </div> <div class='infoStat'>".$station->getNUMBORNE()."</div>
+        </div>
         </div>";
     }
 

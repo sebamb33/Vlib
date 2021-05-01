@@ -445,3 +445,56 @@ body
     font-size: 1em;
     border-bottom: 5px solid  #798777;
 }
+/*Partie station */
+.contentStation
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 100%;
+    margin-top:2em;
+}
+.StatDispo
+{
+    margin:2em;
+    background: #f8ede3;
+    width: 50%;
+    padding:2em;
+    border-radius: 2em;
+}
+.StatIndispo
+{
+    margin:2em;
+    background: #f8ede3;
+    width: 50%;
+    padding:2em;
+    border-radius: 2em;
+    border:2px  #c64756  solid;
+}
+.StatIndispo .intituleStat
+{
+    color:#c64756;
+}
+.StatIndispo .infoStat
+{
+    color:#c64756;
+}
+.tabStation
+{
+    display: grid;
+    flex-basis: 50%;
+    grid-template-columns:repeat(2,50%);
+}
+.intituleStat{
+    grid-column: 1;
+    font-family: 'Pacifico', cursive;
+    font-size: large;
+    color:#798777;
+}
+.infoStat
+{
+    grid-column: 2;
+    font-family: 'Varela Round', sans-serif;
+    color:#798777;
+    font-size: larger;
+}
